@@ -1,0 +1,55 @@
+#Config de PostGreSQL
+#CREER LA DATABASE ET MODIFIER DBNAME AVANT DEXECUTER LE PROGRAMME
+postgresql:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "PSSWD"
+  dbname: "DBNAME"
+
+#Config de monetDB
+monetdb:
+  host: "localhost"
+  port: 50000
+  user: "monetdb"
+  password: "PSSWD"
+  dbname: "DBNAME"
+  
+queries:
+   query1: "SELECT 
+    b.business_id,
+    b.name,
+    c.date 
+    FROM BUSINESS b 
+    JOIN CHECKIN c ON b.business_id = c.business_id;"
+   query2: "SELECT 
+    b.name,
+    b.city,
+    b.state,
+    b.hours,
+    u.name,
+    t.text,
+    t.date
+    FROM 
+    BUSINESS b
+    JOIN 
+    TIP t ON b.business_id = t.business_id
+    JOIN 
+    APP_USER u ON t.user_id = u.user_id;"
+   query3: "SELECT 
+    b.name,
+    u.name
+    FROM 
+    BUSINESS b
+    JOIN
+    TIP t ON b.business_id = t.business_id
+    JOIN
+    APP_USER u ON u.user_id = t.user_id;"
+   #query4: "SELECT t1.business_id FROM TIP t1 JOIN TIP t2 ON t1.user_id = t2.user_id"
+   #Query non utilisée car elle demande trop de ressources pour la machine sur laquelle les benchmarks ont été effectués.
+   
+    
+
+
+
+
